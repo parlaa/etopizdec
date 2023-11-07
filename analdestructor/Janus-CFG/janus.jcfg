@@ -2,11 +2,11 @@
 # in foreground, default interface to use, debug/logging level and, if needed, shared apisecret and/or token authentication mechanism between 
 # application(s) and Janus.
 general: {
-        configs_folder = "/usr/local/etc/janus/"                 # Configuration files folder
-        plugins_folder = "/usr/local/lib/janus/plugins/"                 # Plugins folder
-        transports_folder = "/usr/local/lib/janus/transports/"   # Transports folder
-        events_folder = "/usr/local/lib/janus/events/"                   # Event handlers folder
-        loggers_folder = "/usr/local/lib/janus/loggers/"                 # External loggers folder		# The next settings configure logging
+        configs_folder = "/usr/local/etc/janus"                 # Configuration files folder
+        plugins_folder = "/usr/local/lib/janus/plugins"                 # Plugins folder
+        transports_folder = "/usr/local/lib/janus/transports"   # Transports folder
+        events_folder = "/usr/local/lib/janus/events"                   # Event handlers folder
+        loggers_folder = "/usr/local/lib/janus/loggers"                 # External loggers folder		# The next settings configure logging
 	#log_to_stdout = false # Whether the Janus output should be written
 											# to stdout or not (default=true)
 	#log_to_file = "/path/to/janus.log" # Whether to use a log file or not
@@ -34,9 +34,9 @@ general: {
 									# to be accepted/authorized by the admin/monitor. only needed if you enabled the
 									# admin API in any of the available transports.
 		# Generic settings
-	interface = "1.2.3.4" # Interface to use (will be used in SDP) server_name = "MyJanusInstance"# Public name of this Janus instance
+	#interface = "1.2.3.4" # Interface to use (will be used in SDP) server_name = "MyJanusInstance"# Public name of this Janus instance
 									# as it will appear in an info request
-	session_timeout = 60 # How long (in seconds) we should wait before
+	#session_timeout = 60 # How long (in seconds) we should wait before
 									# deciding a Janus session has timed out. A session times out when no request is
 									# received for session_timeout seconds (default=60s). Setting this to 0 will
 									# disable the timeout mechanism, which is NOT suggested as it may risk having
@@ -157,7 +157,7 @@ plugins: {
 # transport: use a comma separated list of transport file names to identify the transports to disable. By default all available transports are enabled and
 # loaded at startup.
 transports: {
-	enable = "libjanus_rabbitmq.so"
+	#disable = "libjanus_rabbitmq.so"
 }
 # As a core feature, Janus can log either on the standard output, or to a local file. Should you need more advanced logging functionality, you can make use
 # of one of the custom loggers, or write one yourself. Use the 'disable' directive to prevent Janus from loading one or more loggers: use a comma separated
