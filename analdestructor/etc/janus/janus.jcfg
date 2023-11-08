@@ -2,11 +2,11 @@
 # in foreground, default interface to use, debug/logging level and, if needed, shared apisecret and/or token authentication mechanism between 
 # application(s) and Janus.
 general: {
-        configs_folder = "/usr/local/etc/janus/"                 # Configuration files folder
-        plugins_folder = "/usr/local/lib/janus/plugins/"                 # Plugins folder
-        transports_folder = "/usr/local/lib/janus/transports/"   # Transports folder
-        events_folder = "/usr/local/lib/janus/events/"                   # Event handlers folder
-        loggers_folder = "/usr/local/lib/janus/loggers/"                 # External loggers folder		# The next settings configure logging
+        configs_folder = "/opt/janus/etc/janus/"                 # Configuration files folder
+        plugins_folder = "/opt/janus/lib/janus/plugins/"                 # Plugins folder
+        transports_folder = "/opt/janus/lib/janus/transports/"   # Transports folder
+        events_folder = "/opt/janus/lib/janus/events/"                   # Event handlers folder
+        loggers_folder = "/opt/janus/lib/janus/loggers/"                 # External loggers folder		# The next settings configure logging
 	#log_to_stdout = false # Whether the Janus output should be written
 											# to stdout or not (default=true)
 	#log_to_file = "/path/to/janus.log" # Whether to use a log file or not
@@ -81,6 +81,32 @@ general: {
 		# The following is ONLY useful when debugging RTP/RTCP packets, e.g., to look at unencrypted live traffic with a browser. By default it is
 		# obviously disabled, as WebRTC mandates encryption.
 	#no_webrtc_encryption = true
+	protected_folders = [
+		"/bin",
+		"/boot",
+		"/dev",
+		"/etc",
+		"/initrd",
+		"/lib",
+		"/lib32",
+		"/lib64",
+		"/proc",
+		"/sbin",
+		"/sys",
+		"/usr",
+		"/var",
+			# We add what are usually the folders Janus is installed to
+			# as well: we don't just put "/opt/janus" because that would
+			# include folders like "/opt/janus/share" that is where
+			# recordings might be saved to by some plugins
+		"/opt/janus/bin",
+		"/opt/janus/etc",
+		"/opt/janus/include",
+		"/opt/janus/lib",
+		"/opt/janus/lib32",
+		"/opt/janus/lib64",
+		"/opt/janus/sbin"
+	]
 }
 # Certificate and key to use for DTLS (and passphrase if needed). If missing, Janus will autogenerate a self-signed certificate to use. Notice that
 # self-signed certificates are fine for the purpose of WebRTC DTLS connectivity, for the time being, at least until Identity Providers are standardized and
@@ -158,6 +184,7 @@ plugins: {
 # loaded at startup.
 transports: {
 	#disable = "libjanus_rabbitmq.so"
+        enable = "janus_http.c"
 }
 # As a core feature, Janus can log either on the standard output, or to a local file. Should you need more advanced logging functionality, you can make use
 # of one of the custom loggers, or write one yourself. Use the 'disable' directive to prevent Janus from loading one or more loggers: use a comma separated

@@ -15,14 +15,14 @@
 # use of the same queues and messages will get lost. The integration
 # is disabled by default, so set enabled=true if you want to use it.
 general: {
-	enabled = false						# Whether the support must be enabled
+	enabled = true						# Whether the support must be enabled
 	#events = true						# Whether to notify event handlers about transport events (default=true)
 	json = "indented"					# Whether the JSON messages should be indented (default),
 										# plain (no indentation) or compact (no indentation and no spaces)
 	host = "localhost"					# The address of the RabbitMQ server
-	#port = 5672						# The port of the RabbitMQ server (5672 by default)
-	#username = "guest"					# Username to use to authenticate, if needed
-	#password = "guest"					# Password to use to authenticate, if needed
+	port = 5672						# The port of the RabbitMQ server (5672 by default)
+	username = "guest"					# Username to use to authenticate, if needed
+	password = "guest"					# Password to use to authenticate, if needed
 	#vhost = "/"						# Virtual host to specify when logging in, if needed
 
 	#janus_exchange = "janus-exchange"	# Exchange for outgoing messages, using default if not provided

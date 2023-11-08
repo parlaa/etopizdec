@@ -15,6 +15,6 @@ services:
       - "7078:7088"
       - "7079:7089"
     volumes:
-      - ./etc/janus/:/usr/local/etc/janus/
-      - ./config/janus:/usr/local/lib/janus/
+      - ./etc/janus/:/opt/janus/etc/janus/
+      - ./config/janus:/opt/janus/lib/janus/
     restart: always
